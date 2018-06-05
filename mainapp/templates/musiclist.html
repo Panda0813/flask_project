@@ -1,0 +1,39 @@
+{% extends 'bootstrap/base.html' %}
+{% block styles %}
+{{ super() }}
+<style>
+#left{
+    float: left;
+    width: 20%;
+    height: 300px;
+    background-color: palegreen;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px grey;
+    font-size: 16px;
+}
+
+#right{
+    float: left;
+    width: 75%;
+    height: 800px;
+    margin: -20px 20px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div id="left">
+<h3 align="center">歌单</h3>
+<ul>
+{% for music in musics %}
+    <li>
+        <a href="/playmusic/{{ music.id }}/" target="music">
+            {{ music.name }} -- {{ music.singer }}</a></li>
+{% endfor %}
+</ul>
+</div>
+<div id="right">
+<iframe frameborder="0" name="music"
+        width="100%" height="100%"></iframe>
+</div>
+{% endblock %}
